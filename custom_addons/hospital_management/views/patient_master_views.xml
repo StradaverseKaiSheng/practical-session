@@ -6,6 +6,15 @@
       <field name="model">hospital_management.patient_master</field>
       <field name="arch" type="xml">
         <form>
+            <header>
+                <button id="button_in_progress" name="action_in_progress" string="Confirm" type="object"/>
+                <button id="button_sent_email" name="action_sent_email" string="Send by Email" type="object"/>
+                <button id="button_approved" name="action_approved" string="Approve" type="object"/>
+                <button id="button_done" name="action_done" string="Done" type="object"/>
+                <button id="button_cancel" name="action_cancel" string="Cancel" type="object"/>
+                <field name="state" widget="statusbar" nolabel="1" options="{'clickable': '1'}"
+                statusbar_visible="draft,in_progress,sent_email,approved,done"/>
+            </header>
             <sheet>
                 <group>
                     <field name="date"/>
@@ -13,10 +22,10 @@
                     <field name="gender" widget="radio"/>
                     <field name="age"/>
                     <field name="mobile"/>
-                    <field name="symptoms"/>
-                    <field name="disease"/>
-                    <field name="cure_for_disease"/>
-                    <field name="medicines"/>
+                    <field name="symptoms" required="True"/>
+                    <field name="disease" widget="many2many_tags" required="True"/>
+                    <field name="cure_for_disease" required="True"/>
+                    <field name="medicines" required="True"/>
                     <field name="cancellation_remark"/>
                 </group>
             </sheet>
