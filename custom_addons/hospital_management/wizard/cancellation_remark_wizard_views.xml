@@ -1,0 +1,17 @@
+<odoo>
+    <record model="ir.ui.view" id="view_cancellation_remark_wizard_form">
+        <field name="name">hospital_management.cancellation_remark_wizard.form</field>
+        <field name="model">hospital_management.cancellation_remark_wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cancellation Remark">
+                <group>
+                    <field name="cancellation_remark" placeholder="Cancellation Remark"/>
+                </group>
+                <footer>
+                    <button string="Confirm" type="object" name="confirm_cancelation" class="btn-primary"/>
+                    <button string="Cancel" type="object" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -39,4 +39,12 @@ class patient_master(models.Model):
         self.state = 'done'
 
     def action_cancel(self):
-        self.state = 'draft'
+        return {
+            'name': 'Cancellation Remark',
+            'view_mode': 'form',
+            'view_id': False,
+            'view_type': 'form',
+            'res_model': 'hospital_management.cancellation_remark_wizard',
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+        }
