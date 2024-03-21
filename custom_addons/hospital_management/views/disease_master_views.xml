@@ -1,0 +1,54 @@
+<odoo>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="view_disease_master_form">
+      <field name="name">hospital_management.disease_master.form</field>
+      <field name="model">hospital_management.disease_master</field>
+      <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="code"/>
+                    <field name="name"/>
+                </group>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_disease_master_tree">
+      <field name="name">hospital_management.disease_master.tree</field>
+      <field name="model">hospital_management.disease_master</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="code"/>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_disease_master">
+      <field name="name">Disease Master</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hospital_management.disease_master</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above
+
+    <record model="ir.actions.server" id="hospital_management.action_server">
+      <field name="name">hospital_management server</field>
+      <field name="model_id" ref="model_hospital_management_hospital_management"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record> -->
+</odoo>

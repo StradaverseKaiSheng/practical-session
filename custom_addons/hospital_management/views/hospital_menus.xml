@@ -1,0 +1,18 @@
+<odoo>
+    <!-- Top menu item -->
+    <menuitem name="Hospital Management" id="hospital_management.menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="Patient Management" id="hospital_management.patient_management" parent="hospital_management.menu_root"/>
+    <menuitem name="Configuration" id="hospital_management.conf" parent="hospital_management.menu_root"/>
+
+    <!-- actions -->
+    <menuitem name="Patient Master" id="hospital_management.patient_master" parent="hospital_management.patient_management"
+              action=""/>
+    <menuitem name="Bed Allocation" id="hospital_management.bed_allocation" parent="hospital_management.patient_management"
+              action=""/>
+    <menuitem name="Bed Master" id="hospital_management.bed_master" parent="hospital_management.conf"
+              action=""/>
+    <menuitem name="Disease Master" id="hospital_management.disease_master" parent="hospital_management.conf"
+          action="action_disease_master"/>
+</odoo>
