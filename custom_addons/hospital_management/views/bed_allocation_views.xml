@@ -1,0 +1,56 @@
+<odoo>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="view_bed_allocation_form">
+      <field name="name">hospital_management.bed_allocation.form</field>
+      <field name="model">hospital_management.bed_allocation</field>
+      <field name="arch" type="xml">
+        <form>
+            <header>
+                <button id="button_bed_allocated" name="action_bed_allocated" string="Bed Allocation" states="draft" type="object"/>
+                <button id="button_discharge" name="action_discharge" string="Discharge" states="discharge,cancel" type="object"/>
+                <button id="button_cancel" name="action_cancel" string="Cancel" states="discharge,cancel" type="object"/>
+                <field name="state" widget="statusbar" nolabel="1" options="{'clickable': '1'}"
+                statusbar_visible="draft,bed_allocated,discharge"/>
+            </header>
+            <sheet>
+                <group>
+                    <field name="date"/>
+                    <field name="patient_name"/>
+                    <field name="symptoms" readonly="1"/>
+                    <field name="disease" widget="many2many_tags" readonly="1"/>
+                    <field name="cure_for_disease" readonly="1"/>
+                    <field name="medicines" readonly="1"/>
+                    <field name="bed_type" required="True"/>
+                </group>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_bed_allocation_tree">
+      <field name="name">hospital_management.bed_allocation.tree</field>
+      <field name="model">hospital_management.bed_allocation</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="date"/>
+          <field name="patient_name"/>
+          <field name="symptoms"/>
+          <field name="disease"/>
+          <field name="cure_for_disease"/>
+          <field name="medicines"/>
+          <field name="bed_type"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_bed_allocation">
+      <field name="name">Bed Allocation</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hospital_management.bed_allocation</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

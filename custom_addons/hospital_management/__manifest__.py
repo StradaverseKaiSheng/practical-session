@@ -6,6 +6,7 @@
     'website': "https://www.stradaverse.ai/",
     'data': [
         'security/ir.model.access.csv',
+        'views/bed_allocation_views.xml',
         'views/bed_master_views.xml',
         'views/disease_master_views.xml',
         'views/patient_master_views.xml',
