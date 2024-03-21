@@ -5,7 +5,7 @@
         <field name="arch" type="xml">
             <form string="Cancellation Remark">
                 <group>
-                    <field name="cancellation_remark" placeholder="Cancellation Remark"/>
+                    <field name="cancellation_remark" string="Remark" placeholder="Add a description..."/>
                 </group>
                 <footer>
                     <button string="Confirm" type="object" name="confirm_cancelation" class="btn-primary"/>
