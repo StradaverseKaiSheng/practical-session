@@ -2,3 +2,4 @@
 
 from . import bed_master
 from . import disease_master
+from . import patient_master

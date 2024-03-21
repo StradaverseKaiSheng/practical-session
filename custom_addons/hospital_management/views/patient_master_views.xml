@@ -1,0 +1,55 @@
+<odoo>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="view_patient_master_form">
+      <field name="name">hospital_management.patient_master.form</field>
+      <field name="model">hospital_management.patient_master</field>
+      <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="date"/>
+                    <field name="name"/>
+                    <field name="gender" widget="radio"/>
+                    <field name="age"/>
+                    <field name="mobile"/>
+                    <field name="symptoms"/>
+                    <field name="disease"/>
+                    <field name="cure_for_disease"/>
+                    <field name="medicines"/>
+                    <field name="cancellation_remark"/>
+                </group>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_patient_master_tree">
+      <field name="name">hospital_management.patient_master.tree</field>
+      <field name="model">hospital_management.patient_master</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="date"/>
+          <field name="name"/>
+          <field name="gender"/>
+          <field name="age"/>
+          <field name="mobile"/>
+          <field name="symptoms"/>
+          <field name="disease"/>
+          <field name="cure_for_disease"/>
+          <field name="medicines"/>
+          <field name="cancellation_remark"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_patient_master">
+      <field name="name">Patient Master</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hospital_management.patient_master</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

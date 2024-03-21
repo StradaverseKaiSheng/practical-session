@@ -7,3 +7,5 @@ class disease_master(models.Model):
 
     code = fields.Float(string="Code")
     name = fields.Char(string="Name")
+    patient = fields.Many2many('hospital_management.patient_master', relation='disease_patient_rel', string='Patient')
+

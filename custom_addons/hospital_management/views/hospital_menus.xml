@@ -8,7 +8,7 @@
 
     <!-- actions -->
     <menuitem name="Patient Master" id="hospital_management.patient_master" parent="hospital_management.patient_management"
-              action=""/>
+              action="action_patient_master"/>
     <menuitem name="Bed Allocation" id="hospital_management.bed_allocation" parent="hospital_management.patient_management"
               action=""/>
     <menuitem name="Bed Master" id="hospital_management.bed_master" parent="hospital_management.conf"
