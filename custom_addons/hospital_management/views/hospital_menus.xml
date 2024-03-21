@@ -12,7 +12,7 @@
     <menuitem name="Bed Allocation" id="hospital_management.bed_allocation" parent="hospital_management.patient_management"
               action=""/>
     <menuitem name="Bed Master" id="hospital_management.bed_master" parent="hospital_management.conf"
-              action=""/>
+              action="action_bed_master"/>
     <menuitem name="Disease Master" id="hospital_management.disease_master" parent="hospital_management.conf"
           action="action_disease_master"/>
 </odoo>

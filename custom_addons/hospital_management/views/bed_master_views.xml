@@ -1,0 +1,39 @@
+<odoo>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="view_bed_master_form">
+      <field name="name">hospital_management.bed_master.form</field>
+      <field name="model">hospital_management.bed_master</field>
+      <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="bed_number"/>
+                    <field name="bed_type"/>
+                </group>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_bed_master_tree">
+      <field name="name">hospital_management.bed_master.tree</field>
+      <field name="model">hospital_management.bed_master</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="bed_number"/>
+          <field name="bed_type"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_bed_master">
+      <field name="name">Bed Master</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hospital_management.bed_master</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
