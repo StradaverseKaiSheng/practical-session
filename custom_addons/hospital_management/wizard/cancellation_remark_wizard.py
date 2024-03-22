@@ -10,5 +10,5 @@ class CancelPatientWizard(models.TransientModel):
         active_id = self._context.get('active_id')
         if active_id:
             patient_record = self.env['hospital_management.patient_master'].browse(active_id)
-            patient_record.write({'state': 'draft', 'cancellation_remark': self.cancellation_remark})
+            patient_record.write({'state': 'cancel', 'cancellation_remark': self.cancellation_remark})
         return {'type': 'ir.actions.act_window_close'}

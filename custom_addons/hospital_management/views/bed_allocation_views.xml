@@ -8,8 +8,8 @@
         <form>
             <header>
                 <button id="button_bed_allocated" name="action_bed_allocated" string="Bed Allocation" states="draft" type="object"/>
-                <button id="button_discharge" name="action_discharge" string="Discharge" states="discharge,cancel" type="object"/>
-                <button id="button_cancel" name="action_cancel" string="Cancel" states="discharge,cancel" type="object"/>
+                <button id="button_discharge" name="action_discharge" string="Discharge" states="bed_allocated" type="object"/>
+                <button id="button_cancel" name="action_cancel" string="Cancel" states="bed_allocated" type="object"/>
                 <field name="state" widget="statusbar" nolabel="1" options="{'clickable': '1'}"
                 statusbar_visible="draft,bed_allocated,discharge"/>
             </header>

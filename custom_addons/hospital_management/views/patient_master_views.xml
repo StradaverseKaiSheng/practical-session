@@ -11,7 +11,9 @@
                 <button id="button_sent_email" name="action_sent_email" string="Send by Email" states="in_progress" type="object"/>
                 <button id="button_approved" name="action_approved" string="Approve" states="in_progress,sent_email" type="object"/>
                 <button id="button_done" name="action_done" string="Done" states="approved" type="object"/>
-                <button id="button_cancel" name="action_cancel" string="Cancel" states="in_progress,sent_email,approved" type="object"/>
+                <!-- <button id="button_cancel" name="action_cancel" string="Cancel" states="in_progress,sent_email,approved" type="object"/> -->
+                <button id="button_cancel" name="%(hospital_management.action_cancellation_remark_wizard)d" string="Cancel" states="in_progress,sent_email,approved" type="action"/>
+                <button id="button_reset_to_draft" name="action_reset_to_draft" string="Reset to Draft" states="cancel" type="object"/>
                 <field name="state" widget="statusbar" nolabel="1" options="{'clickable': '1'}"
                 statusbar_visible="draft,in_progress,sent_email,approved,done"/>
             </header>

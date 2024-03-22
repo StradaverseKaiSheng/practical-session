@@ -14,4 +14,12 @@
             </form>
         </field>
     </record>
+
+    <record model="ir.actions.act_window" id="action_cancellation_remark_wizard">
+      <field name="name">Cancellation Remark</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hospital_management.cancellation_remark_wizard</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+    </record>
 </odoo>
