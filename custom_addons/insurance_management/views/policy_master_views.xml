@@ -2,8 +2,8 @@
     <!-- explicit list view definition -->
 
     <record model="ir.ui.view" id="view_policy_master_form">
-      <field name="name">insurance_management.policy_master.form</field>
-      <field name="model">insurance_management.policy_master</field>
+      <field name="name">policy.master.form</field>
+      <field name="model">policy.master</field>
       <field name="arch" type="xml">
         <form>
             <sheet>
@@ -24,8 +24,8 @@
     </record>
 
     <record model="ir.ui.view" id="view_policy_master_tree">
-      <field name="name">insurance_management.policy_master.tree</field>
-      <field name="model">insurance_management.policy_master</field>
+      <field name="name">policy.master.tree</field>
+      <field name="model">policy.master</field>
       <field name="arch" type="xml">
         <tree>
           <field name="code"/>
@@ -47,7 +47,7 @@
     <record model="ir.actions.act_window" id="action_policy_master">
       <field name="name">Policy Master</field>
       <field name="type">ir.actions.act_window</field>
-      <field name="res_model">insurance_management.policy_master</field>
+      <field name="res_model">policy.master</field>
       <field name="view_mode">tree,form</field>
     </record>
 </odoo>
