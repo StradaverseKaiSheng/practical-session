@@ -1,0 +1,53 @@
+<odoo>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="view_policy_master_form">
+      <field name="name">insurance_management.policy_master.form</field>
+      <field name="model">insurance_management.policy_master</field>
+      <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="policy_type"/>
+                    <field name="premium_paying_period"/>
+                    <field name="payment_type"/>
+                    <field name="payment_mode"/>
+                    <field name="premium_amount"/>
+                    <field name="total_policy_amount"/>
+                    <field name="notes"/>
+                </group>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_policy_master_tree">
+      <field name="name">insurance_management.policy_master.tree</field>
+      <field name="model">insurance_management.policy_master</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="code"/>
+          <field name="name"/>
+          <field name="policy_type"/>
+          <field name="premium_paying_period"/>
+          <field name="payment_type"/>
+          <field name="payment_mode"/>
+          <field name="premium_amount"/>
+          <field name="total_policy_amount"/>
+          <field name="notes"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_policy_master">
+      <field name="name">Policy Master</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">insurance_management.policy_master</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

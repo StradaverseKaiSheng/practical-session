@@ -1,0 +1,11 @@
+<odoo>
+    <!-- Top menu item -->
+    <menuitem name="Insurance Management" id="insurance_management.menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="Configuration" id="insurance_management.conf" parent="insurance_management.menu_root"/>
+
+    <!-- actions -->
+    <menuitem name="Policy Master" id="insurance_management.policy_master" parent="insurance_management.conf"
+              action="action_policy_master"/>
+</odoo>
