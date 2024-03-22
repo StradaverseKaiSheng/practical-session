@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 
 class bed_allocation(models.Model):
@@ -35,3 +36,11 @@ class bed_allocation(models.Model):
             self.disease = self.patient_name.disease
             self.cure_for_disease = self.patient_name.cure_for_disease
             self.medicines = self.patient_name.medicines
+
+    @api.constrains('bed_type')
+    def check_bed_availability(self):
+        for allocation in self:
+            bed_type = allocation.bed_type
+            allocated_beds = self.env['hospital_management.bed_allocation'].search_count([('bed_type', '=', bed_type.id), ('state', '=', 'bed_allocated')])
+            if allocated_beds > bed_type.bed_number:
+                raise ValidationError("No more beds of type '{}' available.".format(bed_type.bed_type))
