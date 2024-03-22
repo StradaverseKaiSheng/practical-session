@@ -26,7 +26,24 @@ class PolicyMaster(models.Model):
     total_policy_amount = fields.Float(string="Total Policy Amount")
     notes = fields.Html(string="Notes")
 
+    # @api.model
+    # def create(self, vals):
+    #     if vals.get('code', 'New') == 'New':
+    #         vals['code'] = self.env['ir.sequence'].next_by_code('your.model.sequence') or '/'
+    #     return super(YourModel, self).create(vals)
+
     # @api.depends('premium_paying_period', 'payment_mode', 'premium_amount')
     # def _compute_total_policy_amount(self):
     #     for record in self:
-    #         record.total_policy_amount = record.field1 + record.field2
+    #         if record.payment_type == 'installment':
+    #             if record.payment_mode =='yearly':
+    #                 record.total_policy_amount = record.premium_paying_period * record.premium_amount
+    #             elif record.payment_mode =='half_yearly':
+    #                 record.total_policy_amount = record.premium_paying_period * record.premium_amount * 2
+    #             elif record.payment_mode =='quarterly':
+    #                 record.total_policy_amount = record.premium_paying_period * record.premium_amount * 3
+    #             else:
+    #                 record.total_policy_amount = record.premium_paying_period * record.premium_amount * 12
+    #         else:
+    #             # temp
+    #              record.total_policy_amount = record.premium_paying_period * record.premium_amount
