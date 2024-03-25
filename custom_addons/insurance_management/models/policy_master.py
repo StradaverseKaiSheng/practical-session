@@ -13,7 +13,7 @@ class PolicyMaster(models.Model):
         ('life_insurance', 'Life Insurance'),
         ('car_insurance', 'Car Insurance'),
         ('mediclaim', 'Mediclaim')], string="Policy Type")
-    premium_paying_period = fields.Integer(string="Premium Paying Period")
+    premium_paying_period = fields.Integer(string="Premium Paying Period (In year)")
     payment_type = fields.Selection([
         ('fixed', 'Fixed'),
         ('installment', 'Installment')], string="Payment Type")
