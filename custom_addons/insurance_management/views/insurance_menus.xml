@@ -8,4 +8,6 @@
     <!-- actions -->
     <menuitem name="Policy Master" id="insurance_management.policy_master" parent="insurance_management.conf"
               action="action_policy_master"/>
+    <menuitem name="Customer Master" id="insurance_management.customer_master" parent="insurance_management.conf"
+              action="contacts.action_contacts"/>
 </odoo>
