@@ -31,6 +31,27 @@ class Insurance(models.Model):
         ('cancel', 'Cancel')
     ], default="draft", string="State", required=True)
 
+    def action_confirm(self):
+        for record in self:
+            self.state = 'confirm'
+
+    def action_sent_email(self):
+        for record in self:
+            self.state = 'sent_email'
+            
+    def action_done(self):
+        for record in self:
+            self.state = 'done'
+
+    def action_cancel(self):
+        for record in self:
+            self.state = 'cancel'
+
+    def action_reset_to_draft(self):
+        for record in self:
+            self.state = 'draft'
+
+
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code('insurance')

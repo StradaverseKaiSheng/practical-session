@@ -6,6 +6,15 @@
       <field name="model">insurance</field>
       <field name="arch" type="xml">
         <form>
+            <header>
+                <button id="button_confirm" name="action_confirm" string="Confirm" states="draft" type="object"/>
+                <button id="button_sent_email" name="action_sent_email" string="Send Email" states="draft" type="object"/>
+                <button id="button_done" name="action_done" string="Done" states="confirm,sent_email" type="object"/>
+                <button id="button_cancel" name="action_cancel" string="Cancel" states="confirm,sent_email" type="object"/>
+                <button id="button_reset_to_draft" name="action_reset_to_draft" string="Reset to Draft" states="cancel" type="object"/>
+                <field name="state" widget="statusbar" nolabel="1" options="{'clickable': '1'}"
+                statusbar_visible="draft,confirm,sent_email,done"/>
+            </header>
             <sheet>
                 <group>
                     <field name="customer_id"/>
