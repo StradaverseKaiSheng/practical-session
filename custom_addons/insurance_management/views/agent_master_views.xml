@@ -22,7 +22,8 @@
                 <notebook>
                   <page string="Insurance" name="insurance">
                     <field name="insurance_ids">
-                      <tree editable="bottom">
+                      <!-- <tree editable="bottom"> -->
+                      <tree>
                         <field name="name"/>
                         <field name="customer_id"/>
                         <field name="policy_id"/>

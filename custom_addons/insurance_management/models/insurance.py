@@ -7,21 +7,21 @@ class Insurance(models.Model):
     _name = 'insurance'
     _description = 'Insurance'
 
-    name = fields.Char(string="Name")
+    name = fields.Char(string="Name", readonly=True)
     customer_id = fields.Many2one('res.partner', string="Customer")
     policy_id = fields.Many2one('policy.master', string="Policy")
     agent_id = fields.Many2one('agent.master', string="Agent")
     start_date = fields.Date(string="Start Date", default=fields.Date.today())
 
-    maturity_date = fields.Date(string="Maturity Date") # computed later
+    maturity_date = fields.Date(string="Maturity Date", readonly=True) # computed later
 
-    premium_paying_period = fields.Integer(related='policy_id.premium_paying_period', string="Premium Paying Period (In year)")
-    payment_type = fields.Selection(related='policy_id.payment_type', string="Payment Type")
-    payment_mode = fields.Selection(related='policy_id.payment_mode', string="Payment Mode")
-    premium_amount = fields.Float(related='policy_id.premium_amount', string="Premium Amount")
-    total_policy_amount = fields.Float(related='policy_id.total_policy_amount', string="Total Policy Amount")
+    premium_paying_period = fields.Integer(related='policy_id.premium_paying_period', string="Premium Paying Period (In year)", readonly=True)
+    payment_type = fields.Selection(related='policy_id.payment_type', string="Payment Type", readonly=True)
+    payment_mode = fields.Selection(related='policy_id.payment_mode', string="Payment Mode", readonly=True)
+    premium_amount = fields.Float(related='policy_id.premium_amount', string="Premium Amount", readonly=True)
+    total_policy_amount = fields.Float(related='policy_id.total_policy_amount', string="Total Policy Amount", readonly=True)
     
-    total_commission_amount = fields.Float(string="Total Commission Amount") # computed later
+    total_commission_amount = fields.Float(string="Total Commission Amount", readonly=True) # computed later
 
     state = fields.Selection([
         ('draft', 'Draft'),
