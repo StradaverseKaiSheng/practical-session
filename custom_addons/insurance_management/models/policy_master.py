@@ -35,13 +35,13 @@ class PolicyMaster(models.Model):
     def _compute_total_policy_amount(self):
         for record in self:
             if record.payment_type == 'installment':
-                if record.payment_mode =='yearly':
+                if record.payment_mode == 'yearly':
                     record.total_policy_amount = record.premium_paying_period * record.premium_amount
-                elif record.payment_mode =='half_yearly':
+                elif record.payment_mode == 'half_yearly':
                     record.total_policy_amount = record.premium_paying_period * record.premium_amount * 2
-                elif record.payment_mode =='quarterly':
+                elif record.payment_mode == 'quarterly':
                     record.total_policy_amount = record.premium_paying_period * record.premium_amount * 3
-                else:
+                elif record.payment_mode == 'monthly':
                     record.total_policy_amount = record.premium_paying_period * record.premium_amount * 12
             else:
-                 record.total_policy_amount = record.premium_amount # assume tbc
+                 record.total_policy_amount = record.premium_amount
