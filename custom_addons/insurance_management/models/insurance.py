@@ -18,9 +18,7 @@ class Insurance(models.Model):
     payment_mode = fields.Selection(related='policy_id.payment_mode', string="Payment Mode", readonly=True)
     premium_amount = fields.Float(related='policy_id.premium_amount', string="Premium Amount", readonly=True)
     total_policy_amount = fields.Float(related='policy_id.total_policy_amount', string="Total Policy Amount", readonly=True)
-    
-    total_commission_amount = fields.Float(string="Total Commission Amount", readonly=True) # computed later
-
+    total_commission_amount = fields.Float(string="Total Commission Amount", compute='_compute_total_commission_amount', store=True, readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('confirm', 'Confirmed'),
@@ -34,9 +32,8 @@ class Insurance(models.Model):
         for record in self:
             self.state = 'confirm'
 
-            if record.payment_mode == 'yearly':
-                number_of_premium = record.premium_paying_period
-            elif record.payment_mode == 'half_yearly':
+            number_of_premium = record.premium_paying_period
+            if record.payment_mode == 'half_yearly':
                 number_of_premium = record.premium_paying_period * 2
             elif record.payment_mode == 'quarterly':
                 number_of_premium = record.premium_paying_period * 4
@@ -69,8 +66,8 @@ class Insurance(models.Model):
                     current_date += timedelta(days=30) # Assume
 
             NoOfPremium = self.env['no.of.premium']
-            for i in range(no_of_premium_list):
-                NoOfPremium.create(i)
+            for dict in no_of_premium_list:
+                NoOfPremium.create(dict)
 
     def action_sent_email(self):
         for record in self:
@@ -97,6 +94,11 @@ class Insurance(models.Model):
     def _compute_maturity_date(self):
         for record in self:
             record.maturity_date = fields.Date.from_string(record.start_date) + timedelta(days=365 * record.premium_paying_period)
+
+    @api.depends('no_of_premium_ids.commission_amount')
+    def _compute_total_commission_amount(self):
+        for record in self:
+            record.total_commission_amount = sum(record.no_of_premium_ids.mapped('commission_amount'))
 
 
 class NoOfPremium(models.Model):

@@ -29,28 +29,18 @@
                     <field name="total_policy_amount" readonly="1"/>
                     <field name="total_commission_amount" readonly="1"/>
                 </group>
-                <!-- <notebook>
-                  <page string="Insurance" name="insurance">
-                    <field name="insurance_ids">
+                <notebook>
+                  <page string="No of Premium" name="no.of.premium">
+                    <field name="no_of_premium_ids">
                       <tree>
-                        <field name="name"/>
-                        <field name="customer_id"/>
-                        <field name="policy_id"/>
-                        <field name="total_commission_amount"/>
-                        <field name="state"/>
+                        <field name="number"/>
+                        <field name="due_date"/>
+                        <field name="premium_amount"/>
+                        <field name="commission_amount"/>
                       </tree>
-                      <form>
-                        <group>
-                          <field name="name"/>
-                          <field name="customer_id"/>
-                          <field name="policy_id"/>
-                          <field name="total_commission_amount"/>
-                          <field name="state"/>
-                        </group>
-                      </form>
                     </field>
                   </page>
-                </notebook> -->
+                </notebook>
             </sheet>
         </form>
       </field>
