@@ -34,6 +34,44 @@ class Insurance(models.Model):
         for record in self:
             self.state = 'confirm'
 
+            if record.payment_mode == 'yearly':
+                number_of_premium = record.premium_paying_period
+            elif record.payment_mode == 'half_yearly':
+                number_of_premium = record.premium_paying_period * 2
+            elif record.payment_mode == 'quarterly':
+                number_of_premium = record.premium_paying_period * 4
+            elif record.payment_mode == 'monthly':
+                number_of_premium = record.premium_paying_period * 12
+
+            current_date = fields.Date.from_string(record.start_date)
+            no_of_premium_list = []
+            for _ in range(number_of_premium):
+                commission_amount = 0
+                if record.agent_id.commission_type == 'fixed':
+                    commission_amount = record.agent_id.amount
+                elif record.agent_id.commission_type == 'based_on_percentage':
+                    commission_amount = (record.agent_id.percentage / 100) * record.total_policy_amount
+
+                no_of_premium_list.append({
+                    'insurance_id': record.id,
+                    'due_date': current_date,
+                    'premium_amount': record.premium_amount,
+                    'commission_amount': commission_amount
+                })
+
+                if record.payment_mode == 'yearly':
+                    current_date += timedelta(days=365) # Assume
+                elif record.payment_mode == 'half_yearly':
+                    current_date += timedelta(days=180) # Assume
+                elif record.payment_mode == 'quarterly':
+                    current_date += timedelta(days=90) # Assume
+                elif record.payment_mode == 'monthly':
+                    current_date += timedelta(days=30) # Assume
+
+            NoOfPremium = self.env['no.of.premium']
+            for i in range(no_of_premium_list):
+                NoOfPremium.create(i)
+
     def action_sent_email(self):
         for record in self:
             self.state = 'sent_email'
@@ -49,7 +87,6 @@ class Insurance(models.Model):
     def action_reset_to_draft(self):
         for record in self:
             self.state = 'draft'
-
 
     @api.model
     def create(self, vals):
@@ -71,3 +108,8 @@ class NoOfPremium(models.Model):
     due_date = fields.Date(string="Due Date")
     premium_amount = fields.Float(string="Premium Amount")
     commission_amount = fields.Float(string="Commission Amount")
+
+    @api.model
+    def create(self, vals):
+        vals['number'] = self.env['ir.sequence'].next_by_code('no.of.premium')
+        return super(NoOfPremium, self).create(vals)

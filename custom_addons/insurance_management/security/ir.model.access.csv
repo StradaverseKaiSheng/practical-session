@@ -1,4 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_agent_master,agent.master,model_agent_master,base.group_user,1,1,1,1
 access_insurance,insurance,model_insurance,base.group_user,1,1,1,1
+access_no_of_premium,no.of.premium,model_no_of_premium,base.group_user,1,1,1,1
 access_policy_master,policy.master,model_policy_master,base.group_user,1,1,1,1

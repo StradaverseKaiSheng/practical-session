@@ -40,7 +40,7 @@ class PolicyMaster(models.Model):
                 elif record.payment_mode == 'half_yearly':
                     record.total_policy_amount = record.premium_paying_period * record.premium_amount * 2
                 elif record.payment_mode == 'quarterly':
-                    record.total_policy_amount = record.premium_paying_period * record.premium_amount * 3
+                    record.total_policy_amount = record.premium_paying_period * record.premium_amount * 4
                 elif record.payment_mode == 'monthly':
                     record.total_policy_amount = record.premium_paying_period * record.premium_amount * 12
             else:
