@@ -6,6 +6,7 @@
     'website': "https://www.stradaverse.ai/",
     'data': [
         'security/ir.model.access.csv',
+        'data/policy_master_data.xml',
         'views/policy_master_views.xml',
         'views/insurance_menus.xml',
     ],

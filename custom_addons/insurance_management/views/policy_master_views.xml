@@ -8,12 +8,12 @@
         <form>
             <sheet>
                 <group>
-                    <field name="code"/>
+                    <!-- <field name="code" readonly="1"/> -->
                     <field name="name"/>
                     <field name="policy_type"/>
                     <field name="premium_paying_period"/>
                     <field name="payment_type"/>
-                    <field name="payment_mode"/>
+                    <field name="payment_mode" attrs="{'invisible': [('payment_type', '!=', 'installment')]}"/>
                     <field name="premium_amount"/>
                     <field name="total_policy_amount"/>
                     <field name="notes"/>
@@ -35,7 +35,7 @@
           <field name="payment_type"/>
           <field name="payment_mode"/>
           <field name="premium_amount"/>
-          <field name="total_policy_amount"/>
+          <field name="total_policy_amount" readonly="1"/>
           <field name="notes"/>
         </tree>
       </field>
