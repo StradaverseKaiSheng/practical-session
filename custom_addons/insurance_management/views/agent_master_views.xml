@@ -1,42 +1,66 @@
 <odoo>
     <!-- explicit list view definition -->
 
-    <!-- <record model="ir.ui.view" id="view_policy_master_form">
-      <field name="name">policy.master.form</field>
-      <field name="model">policy.master</field>
+    <record model="ir.ui.view" id="view_agent_master_form">
+      <field name="name">agent.master.form</field>
+      <field name="model">agent.master</field>
       <field name="arch" type="xml">
         <form>
             <sheet>
                 <group>
-                    <!-- <field name="code" readonly="1"/> -->
+                    <field name="code"/>
                     <field name="name"/>
-                    <field name="policy_type"/>
-                    <field name="premium_paying_period"/>
-                    <field name="payment_type"/>
-                    <field name="payment_mode" attrs="{'invisible': [('payment_type', '!=', 'installment')]}"/>
-                    <field name="premium_amount"/>
-                    <field name="total_policy_amount"/>
-                    <field name="notes"/>
+                    <field name="contact_detail"/>
+                    <field name="email_id"/>
+                    <field name="gender" widget="radio"/>
+                    <field name="related_user_id"/>
+                    <field name="commission_type"/>
+                    <field name="amount" attrs="{'invisible': [('commission_type', '!=', 'fixed')]}"/>
+                    <field name="percentage" attrs="{'invisible': [('commission_type', '!=', 'based_on_percentage')]}"/>
+                    <field name="total_commission" readonly="1"/>
                 </group>
+                <notebook>
+                  <page string="Insurance" name="insurance">
+                    <field name="insurance_ids">
+                      <tree editable="bottom">
+                        <field name="name"/>
+                        <field name="customer_id"/>
+                        <field name="policy_id"/>
+                        <field name="total_commission_amount"/>
+                        <field name="state"/>
+                      </tree>
+                      <!-- <form>
+                        <group>
+                          <field name="name"/>
+                          <field name="customer_id"/>
+                          <field name="policy_id"/>
+                          <field name="total_commission_amount"/>
+                          <field name="state"/>
+                        </group>
+                      </form> -->
+                    </field>
+                  </page>
+                </notebook>
             </sheet>
         </form>
       </field>
     </record>
 
-    <record model="ir.ui.view" id="view_policy_master_tree">
-      <field name="name">policy.master.tree</field>
-      <field name="model">policy.master</field>
+    <record model="ir.ui.view" id="view_agent_master_tree">
+      <field name="name">agent.master.tree</field>
+      <field name="model">agent.master</field>
       <field name="arch" type="xml">
         <tree>
           <field name="code"/>
           <field name="name"/>
-          <field name="policy_type"/>
-          <field name="premium_paying_period"/>
-          <field name="payment_type"/>
-          <field name="payment_mode"/>
-          <field name="premium_amount"/>
-          <field name="total_policy_amount" readonly="1"/>
-          <field name="notes"/>
+          <field name="contact_detail"/>
+          <field name="email_id"/>
+          <field name="gender"/>
+          <field name="related_user_id"/>
+          <field name="commission_type"/>
+          <field name="amount"/>
+          <field name="percentage"/>
+          <field name="total_commission"/>
         </tree>
       </field>
     </record>
@@ -44,10 +68,10 @@
 
     <!-- actions opening views on models -->
 
-    <record model="ir.actions.act_window" id="action_policy_master">
-      <field name="name">Policy Master</field>
+    <record model="ir.actions.act_window" id="action_agent_master">
+      <field name="name">Agent Master</field>
       <field name="type">ir.actions.act_window</field>
-      <field name="res_model">policy.master</field>
+      <field name="res_model">agent.master</field>
       <field name="view_mode">tree,form</field>
-    </record> -->
+    </record>
 </odoo>

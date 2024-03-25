@@ -3,9 +3,12 @@
     <menuitem name="Insurance Management" id="insurance_management.menu_root"/>
 
     <!-- menu categories -->
-    <menuitem name="Configuration" id="insurance_management.conf" parent="insurance_management.menu_root"/>
+    <menuitem name="Agent Master" id="insurance_management.agent_master" parent="insurance_management.menu_root" sequence="10"/>
+    <menuitem name="Configuration" id="insurance_management.conf" parent="insurance_management.menu_root" sequence="20"/>
 
     <!-- actions -->
+    <menuitem name="Agent" id="insurance_management.agent" parent="insurance_management.agent_master"
+              action="action_agent_master"/>
     <menuitem name="Policy Master" id="insurance_management.policy_master" parent="insurance_management.conf"
               action="action_policy_master"/>
     <menuitem name="Customer Master" id="insurance_management.customer_master" parent="insurance_management.conf"

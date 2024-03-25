@@ -20,5 +20,10 @@ class AgentMaster(models.Model):
         ('based_on_percentage', 'Based on Percentage')], string="Commission Type")
     amount = fields.Float(string="Amount")
     percentage = fields.Float(string="Percentage")
-    total_commission = fields.Float(string="Total Commission")
+    total_commission = fields.Float(string="Total Commission", compute='_compute_total_commission', store=True)
     insurance_ids = fields.One2many('insurance', 'agent_id', string="Insurance")
+
+    @api.depends('insurance_ids.total_commission_amount')
+    def _compute_total_commission(self):
+        for record in self:
+            record.total_commission = sum(record.insurance_ids.mapped('total_commission_amount'))
